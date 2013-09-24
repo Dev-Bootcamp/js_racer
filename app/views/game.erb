@@ -1,0 +1,44 @@
+  <link style="css" rel="stylesheet" href="application.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="application.js"></script>
+
+<body>
+  <p><%= @player_a.name.capitalize %>, your key is the left arrow.</p>
+  <p><%= @player_b.name.capitalize %>, your key is the right arrow.</p>
+  <div class="race">
+    <table class="racer_table">
+      <tr data-name="a" id="player1_strip">
+        <td class="active" id="1"></td>
+        <td id="2"></td>
+        <td id="3"></td>
+        <td id="4"></td>
+        <td id="5"></td>
+        <td id="6"></td>
+        <td id="7"></td>
+        <td id="8"></td>
+        <td id="9"></td>
+        <td id="10"></td>
+      </tr>
+      <tr data-name="b" id="player2_strip">
+        <td class="active" id="1"></td>
+        <td id="2"></td>
+        <td id="3"></td>
+        <td id="4"></td>
+        <td id="5"></td>
+        <td id="6"></td>
+        <td id="7"></td>
+        <td id="8"></td>
+        <td id="9"></td>
+        <td id="10"></td>
+
+      </tr>
+    </table>
+  </div>
+  <div id="reload">
+    <form action="/creategame/<%=@game.id%>/<%=@player_a.id%>/<%=@player_b.id%>" method="POST">
+      <input type="submit" value="Replay!">
+    </form>
+
+    <a href="/results/<%=@game.id%>">Results</a>
+  </div>
+  </body>
