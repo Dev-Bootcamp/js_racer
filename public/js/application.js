@@ -10,6 +10,9 @@ $(document).ready(function() {
     }
     if ($box1.attr('id') == "10") {
       alert($('body').data('name1') + ' is the winner!');
+      $box1 = $('body').data('name1');
+      $box2 = $('body').data('name2');
+      location.href = '/game_over/' + $('body').data('game') + '/' + $box1
     }
   });
 
@@ -21,6 +24,9 @@ $(document).ready(function() {
     }
     if ($box2.attr('id') == "10") {
       alert($('body').data('name2') + ' is the winner!');
+      $box1 = $('body').data('name1');
+      $box2 = $('body').data('name2');
+      location.href = '/game_over/' + $('body').data('game') + '/' + $box2
     }
   });
 
