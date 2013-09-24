@@ -9,9 +9,13 @@ $(document).ready(function() {
       $box1.prev().removeClass('active');
     }
     if ($box1.attr('id') == "10") {
-      alert('A is the winner!');
+      alert($('body').data('name1') + ' is the winner!');
+      $box1 = $('body').data('name1');
+      $box2 = $('body').data('name2');
+      location.href = '/game_over/' + $('body').data('game') + '/' + $box1
     }
   });
+
   $(document).keyup(function(e) {
     if (e.keyCode == 39) {
       $box2 = $box2.next();
@@ -19,7 +23,10 @@ $(document).ready(function() {
       $box2.prev().removeClass('active');
     }
     if ($box2.attr('id') == "10") {
-      alert('B is the winner!');
+      alert($('body').data('name2') + ' is the winner!');
+      $box1 = $('body').data('name1');
+      $box2 = $('body').data('name2');
+      location.href = '/game_over/' + $('body').data('game') + '/' + $box2
     }
   });
 

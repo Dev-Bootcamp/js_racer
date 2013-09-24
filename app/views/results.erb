@@ -1,5 +1,6 @@
 <h1>These Are your results:</h1>
 
-<p>Game #<%= @game.id %></p>
+<p id="game">Game #<%= @game.id %></p>
 <p>This game was played by <%= @game.players.first.name.capitalize %> and <%= @game.players.last.name.capitalize %></p>
+<p>The WINNER was <%= @winner.name %>!</p>
 <p><a href="/">Home</a></p>
