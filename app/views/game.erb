@@ -2,7 +2,7 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script type="text/javascript" src="application.js"></script>
 
-<body>
+<body data-name1=<%= @player_a.name %> data-name2=<%= @player_b.name %>>
   <p><%= @player_a.name.capitalize %>, your key is the left arrow.</p>
   <p><%= @player_b.name.capitalize %>, your key is the right arrow.</p>
   <div class="race">
@@ -35,7 +35,7 @@
     </table>
   </div>
   <div id="reload">
-    <form action="/creategame/<%=@game.id%>/<%=@player_a.id%>/<%=@player_b.id%>" method="POST">
+    <form action="/creategame/<%=@player_a.id%>/<%=@player_b.id%>" method="POST">
       <input type="submit" value="Replay!">
     </form>
 

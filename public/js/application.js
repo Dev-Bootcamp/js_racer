@@ -9,9 +9,10 @@ $(document).ready(function() {
       $box1.prev().removeClass('active');
     }
     if ($box1.attr('id') == "10") {
-      alert('A is the winner!');
+      alert($('body').data('name1') + ' is the winner!');
     }
   });
+
   $(document).keyup(function(e) {
     if (e.keyCode == 39) {
       $box2 = $box2.next();
@@ -19,7 +20,7 @@ $(document).ready(function() {
       $box2.prev().removeClass('active');
     }
     if ($box2.attr('id') == "10") {
-      alert('B is the winner!');
+      alert($('body').data('name2') + ' is the winner!');
     }
   });
 

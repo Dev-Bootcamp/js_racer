@@ -11,10 +11,10 @@ get '/results/:id' do
 end
 
 
-get '/game/:id/:player_a/:player_b' do
+get '/game/:id' do
   @game = Game.find(params[:id])
-  @player_a = Player.find(params[:player_a])
-  @player_b = Player.find(params[:player_b])
+  @player_a = Player.find(@game.players[0].id)
+  @player_b = Player.find(@game.players[1].id)
   erb :game
 end
 
@@ -22,23 +22,20 @@ end
 
 
 post '/creategame' do
- 
-  player_1 = params[:player1_name]
-  player_2 = params[:player2_name]
   @game = Game.create
-  @player_a = Player.create(name: player_1)
-  @player_b = Player.create(name: player_2)
+  @player_a = Player.find_or_create_by(name: params[:player1_name])
+  @player_b = Player.find_or_create_by(name: params[:player2_name])
   @game.players << @player_a
   @game.players << @player_b
-  redirect to ("/game/#{@game.id}/#{@player_a.id}/#{@player_b.id}")
+  redirect to ("/game/#{@game.id}")
 end
 
-post '/creategame/:id/:player_a/:player_b' do 
+post '/creategame/:player_a/:player_b' do 
   @game = Game.create
-  @player_a = Player.find(params[:player_a])
-  @player_b = Player.find(params[:player_b])
+  @player_a = Player.find_or_create_by(id: params[:player_a])
+  @player_b = Player.find_or_create_by(id: params[:player_b])
   @game.players << @player_a
   @game.players << @player_b
-  redirect to ("/game/#{@game.id}/#{@player_a.id}/#{@player_b.id}")
+  redirect to ("/game/#{@game.id}")
 end
 
