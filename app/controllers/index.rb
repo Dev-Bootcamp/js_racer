@@ -1,14 +1,5 @@
 get '/' do
-  # Look in app/views/index.erb
   erb :index
-end
-
-get '/results/:id' do
-  @game = Game.find(params[:id])
-  p @game
-  p @game.winner
-  @winner = Player.find(@game.winner)
-  erb :results
 end
 
 get '/game/:id' do
@@ -23,12 +14,10 @@ get '/game_over/:id/:name' do
   @winner = Player.find_by(name: params[:name])
   @game.winner = @winner.id
   sleep(2)
-  # redirect to ("/results/#{@game.id}")
   erb :results
 end
 
 #+++++++++++++++++++++++++post
-
 
 post '/creategame' do
   @game = Game.create
@@ -47,4 +36,3 @@ post '/creategame/:player_a/:player_b' do
   @game.players << @player_b
   redirect to ("/game/#{@game.id}")
 end
-
